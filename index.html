@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loneliness - For Ameer 💜</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #f5e6fa; /* soft lavender */
+    font-family: 'Comfortaa', cursive, sans-serif;
+    color: #4a2c6f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container {
+    max-width: 520px;
+    background: rgba(255 255 255 / 0.9);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(74,44,111,0.25);
+    position: relative;
+    z-index: 2;
+  }
+  h1 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 2.3rem;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+  button {
+    background-color: #6b3fa0;
+    border: none;
+    color: white;
+    padding: 13px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #4a276c;
+  }
+
+  /* Floating hearts and stars */
+  .floating {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    user-select: none;
+  }
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) translateX(30px);
+      opacity: 0;
+    }
+  }
+
+  /* Cuddle message & emojis */
+  #cuddleContainer {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    color: #4a2c6f;
+    display: none;
+    user-select: none;
+  }
+  #cuddleEmojis {
+    font-size: 2.8rem;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+  <h1>Hey baby,</h1>
+  <p id="message">
+    Hey baby, I know sometimes it feels like you’re all alone in the world, like no one truly sees or understands what you’re going through. But please believe me when I say you’re never really alone. Even miles apart, I’m always here—thinking of you, holding you close in my heart, and rooting for you every single day. You mean everything to me, and in the quiet moments when loneliness tries to creep in, remember my love wraps around you like the warmest hug. Whenever you need a cuddle or just a little reminder that you’re deeply loved, just click the button—I’m sending you all my love, warmth, and comfort 💜
+  </p>
+  <button id="cuddleBtn">Send you a cuddle from Tash</button>
+
+  <div id="cuddleContainer" aria-live="polite" role="alert">
+    <div id="cuddleMessage">Here’s a big cozy cuddle for you 🧸🤗💜</div>
+  </div>
+</div>
+
+<script>
+  const cuddleBtn = document.getElementById('cuddleBtn');
+  const cuddleContainer = document.getElementById('cuddleContainer');
+
+  cuddleBtn.addEventListener('click', () => {
+    cuddleContainer.style.display = 'block';
+    cuddleBtn.disabled = true;
+    cuddleBtn.style.cursor = 'default';
+    cuddleBtn.style.backgroundColor = '#9b6fd8';
+  });
+
+  // Floating hearts and stars
+  const emojis = ['❤️', '💜', '✨', '🌟'];
+  const createFloating = () => {
+    const el = document.createElement('div');
+    el.classList.add('floating');
+    el.style.left = Math.random() * window.innerWidth + 'px';
+    el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    el.style.animationDuration = (Math.random() * 5 + 6) + 's';
+    el.style.animationDelay = Math.random() * 5 + 's';
+    el.style.color = ['#ff4d6d','#9b6fd8','#f0e6ff','#d1b3ff'][Math.floor(Math.random()*4)];
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.animationName = 'floatUp';
+    document.body.appendChild(el);
+
+    setTimeout(() => {
+      el.remove();
+    }, 11000);
+  };
+  setInterval(createFloating, 350);
+</script>
+
+</body>
+</html>
